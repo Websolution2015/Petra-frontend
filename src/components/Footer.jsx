@@ -1,13 +1,37 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom';
 
 import Logo from '../img/Logo/Logo 3/PNG.png';
 import './components.css'
+import { useInView } from 'react-intersection-observer';
+import { motion, useAnimation } from "framer-motion";
+
 
 const Footer = () => {
+  const controls = useAnimation();
+  const [ref, inView] = useInView({
+    triggerOnce: false,
+    delay: 0
+  });
+
+
+
+  useEffect(() => {
+    if (inView) {
+      controls.start({
+        opacity: 1,
+        y: 0,
+      });
+    } else {
+      controls.start({
+        opacity: 0,
+        y: 120,
+      });
+    }
+  }, [controls, inView]);
   return (
     <footer>
-      <div className='section footer'>
+      <div className='section footer' >
         <div className='footer__container container'>
           <div className="footer-flex">
             <h6>Follow Us</h6>

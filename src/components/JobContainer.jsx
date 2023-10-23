@@ -5,10 +5,33 @@ import "../components/components.css";
 import { useMutation } from 'react-query';
 import { useParams } from 'react-router-dom';
 import ClipLoader from "react-spinners/ClipLoader";
+import { useInView } from 'react-intersection-observer';
+import { motion, useAnimation } from "framer-motion";
 
 const JobContainer = () => {
   const { id } = useParams();
   const [job, setJob] = useState({});
+  const controls = useAnimation();
+  const [ref, inView] = useInView({
+    triggerOnce: false,
+    delay: 0
+  });
+
+  
+
+  useEffect(() => {
+    if (inView) {
+      controls.start({
+        opacity: 1,
+        y: 0,
+      });
+    } else {
+      controls.start({
+        opacity: 0,
+        y: 120,
+      });
+    }
+  }, [controls, inView]);
   
 
   const { register, handleSubmit, reset, formState: { errors } } = useForm();
@@ -81,8 +104,6 @@ const JobContainer = () => {
         </div> : <div><h2 className='job__title'>{job?.title}</h2>
           <p dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(job?.description) }} className='job__description'>
           </p></div>}
-
-
       </div>
 
       <div className="upload__resume container">

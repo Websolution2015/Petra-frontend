@@ -4,24 +4,23 @@ import { useMutation } from 'react-query';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-
-import { motion } from "framer-motion";
+import { motion, useAnimation } from "framer-motion";
 import logo from '../img/Logo/Logo 1/PNG.png'
 import logo2 from '../img/Logo/Logo 2/logo2.png'
 import { useNavigate } from 'react-router-dom';
 import DOMPurify from 'dompurify';
 import { MyMap } from './Map';
 import ClipLoader from "react-spinners/ClipLoader";
-
+import { useInView } from "react-intersection-observer";
 
 
 const HomeContent = () => {
   const { register, handleSubmit, reset, formState: { errors } } = useForm();
   const [jobs, setJobs] = useState([]);
   const navigate = useNavigate();
-
-
-
+  const [ref, inView] = useInView({
+    triggerOnce: false, // Trigger the animation only once
+  });
 
   // Define your mutation function
   const sendFormToEndpoint = async (formData) => {
@@ -92,16 +91,17 @@ const HomeContent = () => {
 
 
 
-
   useEffect(() => {
     fetchJobs();
   }, []);
 
   return (
     <motion.div initial={{ opacity: 0.5, y: 100 }}
-      animate={{ opacity: 1, y: 0}}
+      animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0.9, y: -100 }}
-      transition={{ duration: .7 }}>
+      transition={{ duration: .7 }}
+
+    >
       <ToastContainer />
 
       <section className="herosection">
@@ -113,11 +113,18 @@ const HomeContent = () => {
             ac ante ipsum primis in faucibus.</p>
         </div> */}
       </section>
-      <section className="home-content">
+
+
+      <motion.div className="home-content">
 
         <div className="home-content__one">
-          <div>
+          <motion.div ref={ref}
+            style={{ willChange: inView ? 'transform' : 'auto' }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: inView ? 1 : 0, y: inView ? 0 : 20 }}
+            transition={{ duration: 0.5 }}>
             <img src={logo} alt="petra" />
+
             <p className="home-content__one__text">Petra Power is a precision manufacturer of solid oxide fuel cell power systems.
               Our mission is to seamlessly
               bridge the
@@ -132,7 +139,9 @@ const HomeContent = () => {
               adoption and a true zero-carbon future. We are growing rapidly and always looking for innovative, hard-working,
               and
               mission-driven individuals to join the team. Apply below!</p>
-          </div>
+
+
+          </motion.div>
 
         </div>
 
@@ -148,9 +157,16 @@ const HomeContent = () => {
                 : job.description;
 
               return (
-                <div key={job._id}>
+                <div id="jobs__div" key={job._id}>
                   <h3>{job.title}</h3>
-                  <p dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(truncatedDescription) }}></p>
+                  <motion.div
+                    ref={ref}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: inView ? 1 : 0, y: inView ? 0 : 20 }}
+                    transition={{ duration: 1.5 }}
+                  >
+                    <p dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(truncatedDescription) }}></p>
+                  </motion.div>
                   <button onClick={() => navigate(`/jobs/${job._id}`)} className="btn-no-outline">Apply now</button>
                 </div>
               );
@@ -170,7 +186,12 @@ const HomeContent = () => {
 
 
         <section className="home-content_three">
-          <div>
+          <motion.div
+            ref={ref}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: inView ? 1 : 0, y: inView ? 0 : 20 }}
+            transition={{ duration: 1.5 }}
+          >
             <h3>The work done at Petra Power is fast-paced, ever-evolving and highly interdisciplinary. The job descriptions
               listed
               above and within each application link are meant to provide a broad overview of the position and job
@@ -185,7 +206,7 @@ const HomeContent = () => {
               religion, sex,
               sexual orientation, gender identity, disability, veteran status, or any other protected category
             </p>
-          </div>
+          </motion.div>
         </section>
 
 
@@ -250,7 +271,9 @@ const HomeContent = () => {
             </section>
           </div>
         </section>
-      </section>
+
+
+      </motion.div>
 
     </motion.div>
   )
