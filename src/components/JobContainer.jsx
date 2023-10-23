@@ -40,7 +40,7 @@ const JobContainer = () => {
 
   // Define a function to fetch a single job by ID
   async function fetchJob() {
-    const response = await fetch(`http://localhost:5100/api/v1/jobs/${id}`);
+    const response = await fetch(`https://backend-petra.onrender.com/api/v1/jobs/${id}`);
     if (!response.ok) {
       throw new Error('Network response was not ok');
     }
