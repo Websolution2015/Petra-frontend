@@ -118,11 +118,7 @@ const HomeContent = () => {
       <motion.div className="home-content">
 
         <div className="home-content__one">
-          <motion.div ref={ref}
-            style={{ willChange: inView ? 'transform' : 'auto' }}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: inView ? 1 : 0, y: inView ? 0 : 20 }}
-            transition={{ duration: 0.5 }}>
+          <div>
             <img src={logo} alt="petra" />
 
             <p className="home-content__one__text">Petra Power is a precision manufacturer of solid oxide fuel cell power systems.
@@ -141,7 +137,7 @@ const HomeContent = () => {
               mission-driven individuals to join the team. Apply below!</p>
 
 
-          </motion.div>
+          </div>
 
         </div>
 
@@ -159,14 +155,9 @@ const HomeContent = () => {
               return (
                 <div id="jobs__div" key={job._id}>
                   <h3>{job.title}</h3>
-                  <motion.div
-                    ref={ref}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: inView ? 1 : 0, y: inView ? 0 : 20 }}
-                    transition={{ duration: 1.5 }}
-                  >
-                    <p dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(truncatedDescription) }}></p>
-                  </motion.div>
+
+                  <p dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(truncatedDescription) }}></p>
+
                   <button onClick={() => navigate(`/jobs/${job._id}`)} className="btn-no-outline">Apply now</button>
                 </div>
               );
@@ -186,11 +177,8 @@ const HomeContent = () => {
 
 
         <section className="home-content_three">
-          <motion.div
-            ref={ref}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: inView ? 1 : 0, y: inView ? 0 : 20 }}
-            transition={{ duration: 1.5 }}
+          <div
+            
           >
             <h3>The work done at Petra Power is fast-paced, ever-evolving and highly interdisciplinary. The job descriptions
               listed
@@ -206,7 +194,7 @@ const HomeContent = () => {
               religion, sex,
               sexual orientation, gender identity, disability, veteran status, or any other protected category
             </p>
-          </motion.div>
+          </div>
         </section>
 
 

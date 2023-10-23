@@ -594,7 +594,7 @@ header {
   }
 
   .home-content .home-content__one__text,
-  .home-content__jobs div {
+  .home-content__jobs #jobs__div {
     width: 90%;
     margin: 0 auto;
   }
@@ -705,4 +705,11 @@ header.show {
     height: 94vh;
     text-align: center;
   }
+
+
+    .home-content .home-content__jobs,
+    .footer .footer__container,
+    .home-content__four .home-content__four__flex {
+      margin-top: 1.5rem
+    }
 }
