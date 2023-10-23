@@ -100,7 +100,7 @@ const HomeContent = () => {
       <ToastContainer />
       
       <section className="herosection">
-        <Skeleton count={5} />
+        
         {/* <div class="container">
           <h1>Petra Power</h1>
           <p>Vivamus nisl turpis, ultrices at fermentum eget, interdum ac urna. Proin at turpis mauris. Interdum et
@@ -146,8 +146,8 @@ const HomeContent = () => {
 
                 return (
                   <div key={job._id}>
-                    <h3>{job.title || <Skeleton count={10} /> }</h3>
-                    <p dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(truncatedDescription) }}></p>
+                    <h3>{job.title || <Skeleton count={2} /> }</h3>
+                    <p dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(truncatedDescription) || <Skeleton count={2} /> }}></p>
                     <button onClick={() => navigate(`/jobs/${job._id}`)} className="btn-no-outline">Apply now</button>
                   </div>
                 );
