@@ -11,7 +11,6 @@ const center = {
   lng: -81.449677
 };
 
-console.log(process.env.REACT_APP_MAP);
 
 export function MyMap() {
   const { isLoaded } = useJsApiLoader({
