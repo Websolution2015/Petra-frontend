@@ -9,7 +9,8 @@ import ClipLoader from "react-spinners/ClipLoader";
 const JobContainer = () => {
   const { id } = useParams();
   const [job, setJob] = useState({});
-  console.log(job);
+  
+
   const { register, handleSubmit, reset, formState: { errors } } = useForm();
   // console.log(errors);
 
@@ -66,7 +67,7 @@ const JobContainer = () => {
   }, []);
 
   return (
-    <div className='job__container'>
+    <div className='job__container' style={{ fontFamily: "Poppins"}}>
       <div className='container'>
         {Object.keys(job).length === 0 ? <div style={{ display: "flex", alignItems: "center", justifyContent: "center", width: "100%", border: "none" }}>
           <ClipLoader

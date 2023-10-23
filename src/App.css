@@ -8,6 +8,10 @@
   margin: 0;
 }
 
+body, html {
+  scroll-behavior: smooth;
+}
+
 
 
 :root {

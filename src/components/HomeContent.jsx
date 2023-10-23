@@ -5,7 +5,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 
-
+import { motion } from "framer-motion";
 import logo from '../img/Logo/Logo 1/PNG.png'
 import logo2 from '../img/Logo/Logo 2/logo2.png'
 import { useNavigate } from 'react-router-dom';
@@ -19,6 +19,7 @@ const HomeContent = () => {
   const { register, handleSubmit, reset, formState: { errors } } = useForm();
   const [jobs, setJobs] = useState([]);
   const navigate = useNavigate();
+
 
 
 
@@ -97,7 +98,10 @@ const HomeContent = () => {
   }, []);
 
   return (
-    <>
+    <motion.div initial={{ opacity: 0.5, y: 100 }}
+      animate={{ opacity: 1, y: 0}}
+      exit={{ opacity: 0.9, y: -100 }}
+      transition={{ duration: .7 }}>
       <ToastContainer />
 
       <section className="herosection">
@@ -150,16 +154,16 @@ const HomeContent = () => {
                   <button onClick={() => navigate(`/jobs/${job._id}`)} className="btn-no-outline">Apply now</button>
                 </div>
               );
-            }) : <div style={{ display: "flex", alignItems: "center", justifyContent: "center", width: "100%", border: "none"}}>
+            }) : <div style={{ display: "flex", alignItems: "center", justifyContent: "center", width: "100%", border: "none" }}>
               <ClipLoader
-              color="#fff"
-              loading={true}
-              size={150}
-              aria-label="Loading Spinner"
-              data-testid="loader"
-            />
-              
-              </div>}
+                color="#fff"
+                loading={true}
+                size={150}
+                aria-label="Loading Spinner"
+                data-testid="loader"
+              />
+
+            </div>}
 
           </div>
         </section>
@@ -248,7 +252,7 @@ const HomeContent = () => {
         </section>
       </section>
 
-    </>
+    </motion.div>
   )
 }
 
