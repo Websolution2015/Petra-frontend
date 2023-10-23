@@ -4,8 +4,6 @@ import { useMutation } from 'react-query';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-import Skeleton from 'react-loading-skeleton'
-import 'react-loading-skeleton/dist/skeleton.css'
 
 
 import logo from '../img/Logo/Logo 1/PNG.png'
@@ -13,6 +11,9 @@ import logo2 from '../img/Logo/Logo 2/logo2.png'
 import { useNavigate } from 'react-router-dom';
 import DOMPurify from 'dompurify';
 import { MyMap } from './Map';
+import ClipLoader from "react-spinners/ClipLoader";
+
+
 
 const HomeContent = () => {
   const { register, handleSubmit, reset, formState: { errors } } = useForm();
@@ -87,9 +88,9 @@ const HomeContent = () => {
     },
   });
 
-  
 
-  
+
+
 
   useEffect(() => {
     fetchJobs();
@@ -98,9 +99,9 @@ const HomeContent = () => {
   return (
     <>
       <ToastContainer />
-      
+
       <section className="herosection">
-        
+
         {/* <div class="container">
           <h1>Petra Power</h1>
           <p>Vivamus nisl turpis, ultrices at fermentum eget, interdum ac urna. Proin at turpis mauris. Interdum et
@@ -137,22 +138,29 @@ const HomeContent = () => {
           <img style={{ margin: "2rem 0", width: "282px" }} src={logo2} alt="petra power" />
 
           <div className="home-content__jobs">
-            {
-              
-              jobs?.slice(0, 3).map((job) => {
-                const truncatedDescription = job.description.length > 50
-                  ? job.description.substring(0, 350) + '...'
-                  : job.description;
+            {jobs?.length !== 0 ? jobs?.slice(0, 3).map((job) => {
+              const truncatedDescription = job.description.length > 50
+                ? job.description.substring(0, 350) + '...'
+                : job.description;
 
-                return (
-                  <div key={job._id}>
-                    <h3>{job.title || <Skeleton count={2} /> }</h3>
-                    <p dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(truncatedDescription) || <Skeleton count={2} /> }}></p>
-                    <button onClick={() => navigate(`/jobs/${job._id}`)} className="btn-no-outline">Apply now</button>
-                  </div>
-                );
-              })
-            }
+              return (
+                <div key={job._id}>
+                  <h3>{job.title}</h3>
+                  <p dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(truncatedDescription) }}></p>
+                  <button onClick={() => navigate(`/jobs/${job._id}`)} className="btn-no-outline">Apply now</button>
+                </div>
+              );
+            }) : <div style={{ display: "flex", alignItems: "center", justifyContent: "center", width: "100%", border: "none"}}>
+              <ClipLoader
+              color="#fff"
+              loading={true}
+              size={150}
+              aria-label="Loading Spinner"
+              data-testid="loader"
+            />
+              
+              </div>}
+
           </div>
         </section>
 

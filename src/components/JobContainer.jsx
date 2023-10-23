@@ -4,15 +4,15 @@ import DOMPurify from 'dompurify'
 import "../components/components.css";
 import { useMutation } from 'react-query';
 import { useParams } from 'react-router-dom';
-import Skeleton from 'react-loading-skeleton'
-import 'react-loading-skeleton/dist/skeleton.css'
+import ClipLoader from "react-spinners/ClipLoader";
 
 const JobContainer = () => {
   const { id } = useParams();
   const [job, setJob] = useState({});
+  console.log(job);
   const { register, handleSubmit, reset, formState: { errors } } = useForm();
   // console.log(errors);
-  
+
   const onSubmit = async (data) => {
     const formData = new FormData();
     formData.append('name', data.name);
@@ -53,7 +53,7 @@ const JobContainer = () => {
   const { mutate: fetchJobById, isLoading, isError } = useMutation(fetchJob, {
     onMutate: () => {
       // You can handle any pre-fetching logic here
-      
+
     },
     onSuccess: (data) => {
       setJob(data.job)
@@ -68,11 +68,20 @@ const JobContainer = () => {
   return (
     <div className='job__container'>
       <div className='container'>
-        <h2 className='job__title'>{job?.title || <Skeleton count={2} />}</h2>
-        <p dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(job?.description) }} className='job__description'>
-        </p>
+        {Object.keys(job).length === 0 ? <div style={{ display: "flex", alignItems: "center", justifyContent: "center", width: "100%", border: "none" }}>
+          <ClipLoader
+            color="#fff"
+            loading={true}
+            size={150}
+            aria-label="Loading Spinner"
+            data-testid="loader"
+          />
 
-        
+        </div> : <div><h2 className='job__title'>{job?.title}</h2>
+          <p dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(job?.description) }} className='job__description'>
+          </p></div>}
+
+
       </div>
 
       <div className="upload__resume container">
