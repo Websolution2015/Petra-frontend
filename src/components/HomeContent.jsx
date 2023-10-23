@@ -4,6 +4,9 @@ import { useMutation } from 'react-query';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
+import Skeleton from 'react-loading-skeleton'
+import 'react-loading-skeleton/dist/skeleton.css'
+
 
 import logo from '../img/Logo/Logo 1/PNG.png'
 import logo2 from '../img/Logo/Logo 2/logo2.png'
@@ -97,6 +100,7 @@ const HomeContent = () => {
       <ToastContainer />
       
       <section className="herosection">
+        <Skeleton count={5} />
         {/* <div class="container">
           <h1>Petra Power</h1>
           <p>Vivamus nisl turpis, ultrices at fermentum eget, interdum ac urna. Proin at turpis mauris. Interdum et
@@ -142,7 +146,7 @@ const HomeContent = () => {
 
                 return (
                   <div key={job._id}>
-                    <h3>{job.title}</h3>
+                    <h3>{job.title || <Skeleton count={10} /> }</h3>
                     <p dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(truncatedDescription) }}></p>
                     <button onClick={() => navigate(`/jobs/${job._id}`)} className="btn-no-outline">Apply now</button>
                   </div>

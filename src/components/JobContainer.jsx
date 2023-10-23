@@ -4,6 +4,8 @@ import DOMPurify from 'dompurify'
 import "../components/components.css";
 import { useMutation } from 'react-query';
 import { useParams } from 'react-router-dom';
+import Skeleton from 'react-loading-skeleton'
+import 'react-loading-skeleton/dist/skeleton.css'
 
 const JobContainer = () => {
   const { id } = useParams();
@@ -66,7 +68,7 @@ const JobContainer = () => {
   return (
     <div className='job__container'>
       <div className='container'>
-        <h2 className='job__title'>{job?.title}</h2>
+        <h2 className='job__title'>{job?.title || <Skeleton count={10} />}</h2>
         <p dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(job?.description) }} className='job__description'>
         </p>
 
