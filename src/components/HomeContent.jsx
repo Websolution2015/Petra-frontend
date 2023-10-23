@@ -65,7 +65,7 @@ const HomeContent = () => {
 
   // Define a function to fetch all jobs
   async function fetchAllJobs() {
-    const response = await fetch('http://localhost:5100/api/v1/jobs'); // Replace with your API endpoint
+    const response = await fetch('https://backend-petra.onrender.com/api/v1/jobs'); // Replace with your API endpoint
     if (!response.ok) {
       throw new Error('Network response was not ok');
     }
@@ -134,6 +134,7 @@ const HomeContent = () => {
 
           <div className="home-content__jobs">
             {
+              
               jobs?.slice(0, 3).map((job) => {
                 const truncatedDescription = job.description.length > 50
                   ? job.description.substring(0, 350) + '...'
