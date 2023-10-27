@@ -1,27 +1,30 @@
 import React, { useEffect, useState } from 'react'
 import { useForm } from "react-hook-form"
 import { useMutation } from 'react-query';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 
-import { motion, useAnimation } from "framer-motion";
-import logo from '../img/Logo/Logo 1/PNG.png'
+import {  motion } from "framer-motion";
 import logo2 from '../img/Logo/Logo 2/logo2.png'
 import { useNavigate } from 'react-router-dom';
 import DOMPurify from 'dompurify';
 import { MyMap } from './Map';
 import ClipLoader from "react-spinners/ClipLoader";
-import { useInView } from "react-intersection-observer";
+
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
-const HomeContent = () => {
+
+const HomeContent = ({ jobRef }) => {
+  
   const { register, handleSubmit, reset, formState: { errors } } = useForm();
   const [jobs, setJobs] = useState([]);
-  const navigate = useNavigate();
-  const [ref, inView] = useInView({
-    triggerOnce: false, // Trigger the animation only once
-  });
+  const [message, setMessage] = useState(null)
 
+  const formNotify = () => toast("Form submitted successfully");
+  const ErrorNotify = () => toast("Form not submitted, try again");
+  
+
+  const navigate = useNavigate();
   // Define your mutation function
   const sendFormToEndpoint = async (formData) => {
     // Make the API request to send the form data
@@ -50,15 +53,13 @@ const HomeContent = () => {
   const mutation = useMutation(sendFormToEndpoint, {
     onError: (error) => {
       // Handle errors here
-      const notify = () => toast("Form not submitted, try again");
-      notify()
+      setMessage("Error submitting form")
+      ErrorNotify();
     },
     onSuccess: (data) => {
-      // Handle successful response
-      reset();
-      const notify = () => toast("Form submitted successfully");
-      notify()
-      console.log('Form submitted successfully', data);
+      setMessage("Form submitted successfully")
+      formNotify();
+      reset()
     },
   });
 
@@ -75,8 +76,8 @@ const HomeContent = () => {
     }
     return response.json();
   }
-
-  // Use useMutation to fetch all jobs on page load
+  
+// Use useMutation to fetch all jobs on page load
   const { mutate: fetchJobs, isLoading, isError } = useMutation(fetchAllJobs, {
     onMutate: () => {
       // You can handle any pre-fetching logic here
@@ -85,11 +86,11 @@ const HomeContent = () => {
       // Handle the fetched data, e.g., update your state or display it
       setJobs(data.jobs)
       console.log('Fetched jobs:', data.jobs);
+
+      
+      
     },
   });
-
-
-
 
   useEffect(() => {
     fetchJobs();
@@ -102,25 +103,19 @@ const HomeContent = () => {
       transition={{ duration: .7 }}
 
     >
-      <ToastContainer />
+      <ToastContainer position="bottom-right" />
 
       <section className="herosection">
 
-        {/* <div class="container">
-          <h1>Petra Power</h1>
-          <p>Vivamus nisl turpis, ultrices at fermentum eget, interdum ac urna. Proin at turpis mauris. Interdum et
-            malesuada fames
-            ac ante ipsum primis in faucibus.</p>
-        </div> */}
       </section>
 
 
       <motion.div className="home-content">
 
-        <div className="home-content__one">
+        <div id="about-us" className="home-content__one">
           <div>
-            <img src={logo} alt="petra" />
-
+            {/* <img src={logo} alt="petra" /> */}
+            
             <p className="home-content__one__text">Petra Power is a precision manufacturer of solid oxide fuel cell power systems.
               Our mission is to seamlessly
               bridge the
@@ -134,14 +129,13 @@ const HomeContent = () => {
               hydrogen
               adoption and a true zero-carbon future. We are growing rapidly and always looking for innovative, hard-working,
               and
-              mission-driven individuals to join the team. Apply below!</p>
-
-
+              mission-driven individuals to join the team. Apply below!
+            </p>
           </div>
 
         </div>
 
-        <section className="home-content__two container">
+        <section id="jobs_ref" ref={jobRef} className="home-content__two container">
 
 
           <img style={{ margin: "2rem 0", width: "282px" }} src={logo2} alt="petra power" />
@@ -177,9 +171,7 @@ const HomeContent = () => {
 
 
         <section className="home-content_three">
-          <div
-            
-          >
+          <div>
             <h3>The work done at Petra Power is fast-paced, ever-evolving and highly interdisciplinary. The job descriptions
               listed
               above and within each application link are meant to provide a broad overview of the position and job
@@ -204,11 +196,11 @@ const HomeContent = () => {
               <h2>More info</h2>
               <p>Have a question? We are here to help. Send us a message and we’ll be in touch.</p>
               <div style={{ height: '380px', width: '100' }} className='maps'>
-                <MyMap />
+                {/* <MyMap /> */}
 
               </div>
             </section>
-            <section className='home-content__four-contact-us'>
+            <section id='contact-us' className='home-content__four-contact-us'>
               <form onSubmit={handleSubmit(onSubmit)}>
                 <div className='contact-form-flex'>
                   <div className='firstLast'>
@@ -249,6 +241,10 @@ const HomeContent = () => {
                     })}></textarea>
                     {errors.message && <p>This field is required</p>}
                   </div>
+
+                  {/* <div style={{ textAlign: "left", fontFamily: "Poppins"}}>
+                    {message && <span>{message}</span>}
+                  </div> */}
                 </div>
 
                 <button type="submit" disabled={mutation.isLoading}>

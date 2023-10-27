@@ -8,7 +8,8 @@
   margin: 0;
 }
 
-body, html {
+body,
+html {
   scroll-behavior: smooth;
 }
 
@@ -153,7 +154,7 @@ header {
   background-size: cover;
   display: flex;
   align-items: center;
-  background-image: url("img/hero.png");
+  background-image: url("img/hero.jpg");
 }
 
 .herosection p {
@@ -249,7 +250,7 @@ header {
 .add_job-form textarea {
   height: 300px;
   margin-top: 2rem;
-  padding: 1rem 
+  padding: 1rem
 }
 
 .white-text {
@@ -402,7 +403,7 @@ header {
 .home-content_three div h3 {
   text-align: center;
   font-family: Poppins;
-  font-size: 24px;
+  font-size: 19px;
   font-style: normal;
   font-weight: 600;
   line-height: 25px;
@@ -419,7 +420,7 @@ header {
   font-weight: 400;
   line-height: 22px;
   color: var(--white);
-  width: 50%;
+  width: 70%;
   margin: 0 auto;
 }
 
@@ -707,9 +708,9 @@ header.show {
   }
 
 
-    .home-content .home-content__jobs,
-    .footer .footer__container,
-    .home-content__four .home-content__four__flex {
-      margin-top: 1.5rem
-    }
+  .home-content .home-content__jobs,
+  .footer .footer__container,
+  .home-content__four .home-content__four__flex {
+    margin-top: 1.5rem
+  }
 }

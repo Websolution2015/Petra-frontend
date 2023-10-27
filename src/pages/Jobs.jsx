@@ -4,6 +4,9 @@ import Header from '../components/Header';
 import JobContainer from '../components/JobContainer';
 import JobHero from '../components/JobHero';
 import { motion } from "framer-motion";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 const Jobs = () => {
   useEffect(() => {
@@ -14,13 +17,15 @@ const Jobs = () => {
     <motion.div initial={{ opacity: 0.5, y: 100 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0.9, y: -100 }}
-      transition={{ duration: .7 }}>
+      transition={{ duration: .7 }}
+    >
+      <ToastContainer position="bottom-right" />
       <Header />
       <JobHero />
       <JobContainer />
       <Footer />
     </motion.div>
-    
+
   )
 }
 

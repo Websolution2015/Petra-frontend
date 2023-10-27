@@ -40,16 +40,15 @@ const AddJob = () => {
     {
       onMutate: () => {
 
-        console.log("Form submission in progress");
+        // console.log("Form submission in progress");
       },
       onError: (error) => {
 
         // toast.error(error.message);
-        console.error('Error:', error);
+        // console.error('Error:', error);
       },
       onSuccess: (data) => {
-        console.log('Form submitted successfully', data);
-        alert("Job submitted successfully")
+        
         const notify = () => toast("Form submitted successfully");
         notify()
         setEditorHtml("")
@@ -83,7 +82,7 @@ const AddJob = () => {
 
   return (
     <>
-      <ToastContainer />
+      <ToastContainer position="bottom-right" />
       <Header />
       <div className='add_job-form'>
         <form className="container" onSubmit={handleSubmit(onSubmit)}>

@@ -35,7 +35,7 @@ const Footer = () => {
         <div className='footer__container container'>
           <div className="footer-flex">
             <h6>Follow Us</h6>
-            <p>Stay in touch with us on social media and find out more about what we do</p>
+            <p>Connect with us on social media</p>
             <div className='footer__icons_flex'>
               <Link to="https://www.linkedin.com/company/petra-power-llc">
                 <svg width="41" height="41" viewBox="0 0 41 41" fill="white" xmlns="http://www.w3.org/2000/svg">

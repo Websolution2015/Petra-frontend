@@ -1,21 +1,17 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
-
 import Logo from '../img/Logo/Logo 1/PNG.png'
 
 const Header = () => {
-
-  const [isChecked, setIsChecked] = useState(false);
   const [isActive, setIsActive] = useState(false);
 
   const toggleActive = () => {
     setIsActive(!isActive);
   };
 
-  const handleCheckboxChange = () => {
-    setIsChecked(!isChecked);
-
-  };
+ 
+  
+  
   return (
     <header className={isActive ? "index__header center show" : "index__header center"}>
       <nav className="container">
@@ -30,6 +26,11 @@ const Header = () => {
               <Link to="/">
                 Home
               </Link>
+            </li>
+            <li>
+              <a href="#">
+                Jobs
+              </a>
             </li>
             <li>
               <Link to="/">

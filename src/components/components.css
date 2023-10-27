@@ -197,12 +197,22 @@ footer .footer__copyright {
 .press_flex {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 1rem;
-  /* padding: 0 5rem */
+  grid-template-rows: repeat(2, 150px);
+  gap: 3rem
+}
+
+.press_flex div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .press_flex {
   padding: 7rem 0
+}
+
+.press_flex a {
+  font-size: 18px !important
 }
 
 .press__container_wrapper {
@@ -252,6 +262,17 @@ footer .footer__copyright {
   font-weight: 700;
   line-height: 25px;
   /* 45.455% */
+}
+
+.press_flex button {
+  font-size: 19px;
+
+  background: none;
+  outline: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  /* display: none; */
 }
 
 
