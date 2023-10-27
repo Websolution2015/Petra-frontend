@@ -41,9 +41,9 @@ const Home = () => {
                 </a>
               </li>
               <li>
-                <Link to="#about-us">
+                <a href="#about-us">
                   About us
-                </Link>
+                </a>
               </li>
 
               <li>
