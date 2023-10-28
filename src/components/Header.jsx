@@ -28,16 +28,16 @@ const Header = () => {
               </Link>
             </li>
             <li>
-              <a href="#">
+              <a href="#jobs_ref">
                 Jobs
               </a>
             </li>
             <li>
-              <Link to="/">
+              <a href="#about-us">
                 About us
-              </Link>
+              </a>
             </li>
-            
+
             <li>
               <Link to="/press">
                 Press
@@ -47,7 +47,9 @@ const Header = () => {
         </div>
         <div>
           <span>
-            <button className="btn-no-outline">Contact Us</button>
+            <button className="btn-no-outline">
+              <a style={{ color: "#fff" }} href="#contact-us">Contact Us</a>
+            </button>
           </span>
         </div>
       </nav>
