@@ -4,6 +4,7 @@ import GoogleMapReact from 'google-map-react';
 const Maps = ({ text }) => <div>{text}</div>;
 
 export default function SimpleMap() {
+  
   const defaultProps = {
     center: {
       lat: 41.378979,
@@ -16,7 +17,7 @@ export default function SimpleMap() {
     // Important! Always set the container height explicitly
     <div style={{ height: '100%',}}>
       <GoogleMapReact
-        bootstrapURLKeys={{ key: "AIzaSyDy-iYk9xgGFrp7bpBEa8KDGZbX8MuXsrE" }}
+        bootstrapURLKeys={{ key: process.env.REACT_APP_MAP }}
         defaultCenter={defaultProps.center}
         defaultZoom={defaultProps.zoom}
       >
