@@ -28,15 +28,16 @@ const Header = () => {
               </Link>
             </li>
             <li>
-              <a href="#jobs_ref">
-                Jobs
-              </a>
-            </li>
-            <li>
               <a href="#about-us">
                 About us
               </a>
             </li>
+            <li>
+              <a href="#jobs_ref">
+                Jobs
+              </a>
+            </li>
+            
 
             <li>
               <Link to="/press">
