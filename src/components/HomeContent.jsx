@@ -6,7 +6,7 @@ import {  motion } from "framer-motion";
 import logo2 from '../img/Logo/Logo 2/logo2.png'
 import { useNavigate } from 'react-router-dom';
 import DOMPurify from 'dompurify';
-import { MyMap } from './Map';
+import SimpleMap from './Map';
 import ClipLoader from "react-spinners/ClipLoader";
 
 import { ToastContainer, toast } from 'react-toastify';
@@ -196,7 +196,7 @@ const HomeContent = ({ jobRef }) => {
               <h2>More info</h2>
               <p>Have a question? We are here to help. Send us a message and we’ll be in touch.</p>
               <div style={{ height: '380px', width: '100' }} className='maps'>
-                {/* <MyMap /> */}
+                <SimpleMap />
 
               </div>
             </section>
