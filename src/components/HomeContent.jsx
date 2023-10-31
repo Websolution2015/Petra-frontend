@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useForm } from "react-hook-form"
 import { useMutation } from 'react-query';
-
+import logo from '../img/Logo/Logo 1/SVG.svg'
 import {  motion } from "framer-motion";
 import logo2 from '../img/Logo/Logo 2/logo2.png'
 import { useNavigate } from 'react-router-dom';
@@ -114,7 +114,7 @@ const HomeContent = ({ jobRef }) => {
 
         <div id="about-us" className="home-content__one">
           <div>
-            {/* <img src={logo} alt="petra" /> */}
+            <img src={logo} alt="petra" />
             
             <p className="home-content__one__text">Petra Power is a precision manufacturer of solid oxide fuel cell power systems.
               Our mission is to seamlessly
