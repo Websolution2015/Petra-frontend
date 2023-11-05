@@ -294,6 +294,9 @@ header {
   width: 120px;
 }
 
+.job__description a {
+  text-decoration: underline;
+}
 
 .home-content .home-content__one__text {
   width: 75%;
