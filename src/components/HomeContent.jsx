@@ -37,7 +37,7 @@ const HomeContent = ({ jobRef }) => {
         body: JSON.stringify(formData),
       });
 
-      console.log(response);
+      // console.log(response);
 
       if (!response.ok) {
         throw new Error('Failed to send the form data');
@@ -85,7 +85,7 @@ const HomeContent = ({ jobRef }) => {
     onSuccess: (data) => {
       // Handle the fetched data, e.g., update your state or display it
       setJobs(data.jobs)
-      console.log('Fetched jobs:', data.jobs);
+      // console.log('Fetched jobs:', data.jobs);
 
       
       
@@ -142,8 +142,9 @@ const HomeContent = ({ jobRef }) => {
 
           <div className="home-content__jobs">
             {jobs?.length !== 0 ? jobs?.slice(0, 3).map((job) => {
+              console.log(job.description.length);
               const truncatedDescription = job.description.length > 50
-                ? job.description.substring(0, 350) + '...'
+                ? job.description.substring(0, 490) + '...'
                 : job.description;
 
               return (
