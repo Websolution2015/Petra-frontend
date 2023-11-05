@@ -144,7 +144,7 @@ const HomeContent = ({ jobRef }) => {
             {jobs?.length !== 0 ? jobs?.slice(0, 3).map((job) => {
               console.log(job.description.length);
               const truncatedDescription = job.description.length > 50
-                ? job.description.substring(0, 490) + '...'
+                ? job.description.substring(0, 470) + '...'
                 : job.description;
 
               return (
