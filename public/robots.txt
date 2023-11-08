@@ -1,3 +1,8 @@
 # https://www.robotstxt.org/robotstxt.html
 User-agent: *
 Disallow:
+
+
+<p><span style="color: rgb(255, 255, 255);">Do you think you can help Petra Power in a position other than </span><a href="https://petrapower.com/jobs/6535183fe4ba4b6f02e63777" rel="noopener noreferrer" target="_blank" style="color: rgb(255, 255, 255);">Senior Researcher</a><span style="color: rgb(255, 255, 255);"> or </span><a href="https://petrapower.com/jobs/6535187be4ba4b6f02e63779" rel="noopener noreferrer" target="_blank" style="color: rgb(255, 255, 255);">Laboratory Technician</a><span style="color: rgb(255, 255, 255);">? Petra Power is always looking for highly-motivated, creative, and adaptable employees to help push the Company forward and bring our products to market. Submit your name, email, and phone number below along with an up-to-date resume to be considered. Please be sure to include your proposed position and details as to why you believe you could be an asset to the Company in a cover letter at the front of your resume. It takes people with all kinds of experiences and skills to build a successful power company and we are eager to consider applications from any and all individuals who feel they have something to contribute.</span></p>
+
+Do you think you can help Petra Power in a position other than Senior Researcher or Laboratory Technician? Petra Power is always looking for highly-motivated, creative, and adaptable employees to help push the Company forward and bring our products to market.
